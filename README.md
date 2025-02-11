@@ -1,1 +1,1 @@
-# WEB-programming
+Project has done by student: Litvin Vladislav. MIET University-2025 y.
