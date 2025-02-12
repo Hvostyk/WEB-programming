@@ -1,0 +1,50 @@
+.header-block{
+    display: flex;
+    width: auto;
+    height: 114px;
+    margin: 0 120px 0 120px;
+    align-items: center;
+}
+
+.header-logo{
+    margin-right: auto;
+}
+
+.header-info{
+    display: flex;
+    margin-right: 70px;
+}
+
+.header-info ul{
+    display: flex;
+}
+
+.header-info li{
+    margin-right: 32px;
+}
+
+.header-info li:last-child{
+    margin-right: 0;
+}
+
+.header-contact{
+    display: flex;
+    flex-direction: column;
+}
+
+.header-contact__text{
+    margin-top: 6px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.header-contact__border{
+    display:block;
+    border-top: 1px solid black;
+}
+
+.header-contact::after{
+    content: " ";
+    
+    
+}
