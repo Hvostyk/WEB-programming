@@ -7,10 +7,6 @@ const cx=classNames.bind(style);
 function Header() {
 
 
-    window.onload=()=>{
-
-    };
-
     let [burgermenu_close,closeburger]=useState("true");
     let [burgermenu_open,openburger]=useState("false");
 
@@ -31,8 +27,31 @@ function Header() {
         }
     }
 
+    let [headerstatus,setheaderstat]=useState('true');
+
+    const header=cx({
+        "header_hidden":!headerstatus,
+        "header_visible":headerstatus,
+    });
+
+    let lastscroll=0;
+    let needscroll=200;
+    const scrollpos=()=>window.pageYOffset||document.documentElement.scrollTop;
+
+    window.addEventListener('scroll',()=>{
+        if (scrollpos()>lastscroll && headerstatus && scrollpos()>needscroll){
+            setheaderstat(false)
+            console.log(headerstatus)
+        }
+        else if(scrollpos()<lastscroll && !headerstatus){
+            setheaderstat(true)
+            console.log(headerstatus)
+        }
+        lastscroll=scrollpos();
+    })
+
     return (
-        <div>
+        <header className={header}>
             <div className={style["header-block"]}>
                 <div className={style["header-logo"]}>
                     <img src="../../public/Home/Logo.svg" alt="Logo" />
@@ -60,7 +79,7 @@ function Header() {
                 </div>
                 
             </div>
-        </div>
+        </header>
     );
 }
 

@@ -4,7 +4,7 @@ function Firstpage(){
     return(
         <div>
             <Header/>
-            {/* <Home_Firstpage/> */}
+            <Home_Firstpage/>
         </div>
     )
 }
