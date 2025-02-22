@@ -1,0 +1,25 @@
+.Firstpage-block{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 120px 0 120px;
+}
+
+.Firstpage-info{}
+
+.Firstpage-info__title{
+    font-family:inter;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 96px;
+    letter-spacing: -3px;
+}
+
+.Firstpage-info__slogan{}
+
+.Firstpage-registration{}
+
+.Firstpage-registration__email{}
+
+.Firstpage-registration__button{}
+
+.Firstpage-diagrams{}
