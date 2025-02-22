@@ -1,54 +1,71 @@
 import style from '../styles/header.module.css';
 import classNames from 'classnames/bind';
-import { use, useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
-const cx=classNames.bind(style);
+const cx = classNames.bind(style);
 
 function Header() {
+    const [burgermenu_close, closeburger] = useState(true);
+    const [burgermenu_open, openburger] = useState(false);
+    const [headerstatus, setheaderstat] = useState(true);
+    const lastScrollRef = useRef(0);
 
-
-    let [burgermenu_close,closeburger]=useState("true");
-    let [burgermenu_open,openburger]=useState("false");
-
-    const headermenu=cx({
-        "header-menu":true,
-        "burgermenu_close":burgermenu_close,
-        "burgermenu_open":burgermenu_open && !burgermenu_close,
+    const headermenu = cx({
+        "header-menu": true,
+        "burgermenu_close": burgermenu_close,
+        "burgermenu_open": burgermenu_open && !burgermenu_close,
     });
 
-    let burgerbutton=()=>{
-        if(burgermenu_close){
+    const header = cx({
+        "header_hidden": !headerstatus,
+        "header_visible": headerstatus,
+    });
+
+    const burgerbutton = () => {
+        if (burgermenu_close) {
             closeburger(false);
             openburger(true);
-        }
-        else{
+        } else {
             closeburger(true);
             openburger(false);
         }
-    }
+    };
 
-    let [headerstatus,setheaderstat]=useState('true');
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            const isScrollingDown = currentScroll > lastScrollRef.current;
 
-    const header=cx({
-        "header_hidden":!headerstatus,
-        "header_visible":headerstatus,
-    });
+            // Игнорируем микроскроллы (<5px)
+            if (Math.abs(currentScroll - lastScrollRef.current) < 5) return;
 
-    let lastscroll=0;
-    let needscroll=200;
-    const scrollpos=()=>window.pageYOffset||document.documentElement.scrollTop;
+            if (isScrollingDown && headerstatus && currentScroll > 200) {
+                setheaderstat(false);
+            } else if (!isScrollingDown && !headerstatus) {
+                setheaderstat(true);
+            }
 
-    window.addEventListener('scroll',()=>{
-        if (scrollpos()>lastscroll && headerstatus && scrollpos()>needscroll){
-            setheaderstat(false)
-            console.log(headerstatus)
-        }
-        else if(scrollpos()<lastscroll && !headerstatus){
-            setheaderstat(true)
-            console.log(headerstatus)
-        }
-        lastscroll=scrollpos();
-    })
+            lastScrollRef.current = currentScroll;
+        };
+
+        // Троттлинг событий скролла (1 раз в 100 мс)
+        const throttledScroll = () => {
+            let timeout;
+            return () => {
+                if (!timeout) {
+                    timeout = setTimeout(() => {
+                        handleScroll();
+                        timeout = null;
+                    }, 100);
+                }
+            };
+        };
+
+        const scrollHandler = throttledScroll();
+        window.addEventListener('scroll', scrollHandler);
+
+        return () => window.removeEventListener('scroll', scrollHandler);
+    }, [headerstatus]);
 
     return (
         <header className={header}>
@@ -57,27 +74,25 @@ function Header() {
                     <img src="../../public/Home/Logo.svg" alt="Logo" />
                 </div>
 
-
                 <div className={style["header-burgerbutt"]} onClick={burgerbutton}>
                     <span></span>
                 </div>
 
                 <div className={headermenu}>
-                <div className={style["header-info"]}>
-                    <ul>
-                        <li>Home</li>
-                        <li>About</li>
-                        <li>Blog</li>
-                        <li>Pricing</li>
-                    </ul>
-                </div>
+                    <div className={style["header-info"]}>
+                        <ul>
+                            <li>Home</li>
+                            <li>About</li>
+                            <li>Blog</li>
+                            <li>Pricing</li>
+                        </ul>
+                    </div>
 
-                <div className={style["header-contact"]}>
-                <div className={style["header-contact__text"]}>Contact Us➔</div>
-                <div className={style["header-contact__border"]}></div>
+                    <div className={style["header-contact"]}>
+                        <div className={style["header-contact__text"]}>Contact Us➔</div>
+                        <div className={style["header-contact__border"]}></div>
+                    </div>
                 </div>
-                </div>
-                
             </div>
         </header>
     );
