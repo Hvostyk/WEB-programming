@@ -4,38 +4,27 @@ body{
 
 header {
     display: flex;
-    align-items: center; /* Центрирование по вертикали */
+    align-items: center;
     position: fixed;
     height: calc(100vw * 0.07916667);
     top: 0;
     left: 0;
     right: 0;
-}
-
-.header_visible{
-    visibility:visible;
-    opacity: 1;
-    top: 0;
-    left: 0;
-    right: 0;
-    transition: all 1s ease-in;
-}
-
-.header_hidden{
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-200px);
-    transition: all 1s ease-in;
+    z-index: 100;
+    margin: 0 calc(100vw * 0.0833333);
+    background: rgb(255,208,174);
+    background: radial-gradient(circle, rgba(255,208,174,1) 0%, rgba(226,248,240,1) 70%);
+    animation: header-block 1.5s;
+    border-radius:10px;
 }
 
 .header-block {
     display: flex;
     width: auto;
-    height: 100%; /* Занимает всю высоту header */
-    margin: 0 calc(100vw * 0.0833333);
-    align-items: center; /* Центрирование содержимого по вертикали */
+    height: 100%;
+    align-items: center;
     font-size: calc(100vw * 0.011111);
-    animation: header-block 2s;
+    margin: 0 10px;
 }
 
 @keyframes header-block{
@@ -45,9 +34,26 @@ header {
         transform: translateY(200px);
     }
     to{
+        transform: translateY(0px);
         visibility: visible;
         opacity: 1;
     }
+}
+
+.header_visible{
+    visibility:visible;
+    opacity: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: all 0.8s ease-in;
+}
+
+.header_hidden{
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-200px);
+    transition: all 0.8s ease-in;
 }
 
 .header-logo{
@@ -103,11 +109,7 @@ header {
     border-top: 1px solid black;
 }
 
-.header-contact::after{
-    content: " ";
-    
-    
-}
+
 
 
 @media (max-width:1200px){

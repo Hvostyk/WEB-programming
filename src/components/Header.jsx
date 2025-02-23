@@ -36,10 +36,9 @@ function Header() {
             const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
             const isScrollingDown = currentScroll > lastScrollRef.current;
 
-            // Игнорируем микроскроллы (<5px)
             if (Math.abs(currentScroll - lastScrollRef.current) < 5) return;
 
-            if (isScrollingDown && headerstatus && currentScroll > 200) {
+            if (isScrollingDown && headerstatus && currentScroll > 700) {
                 setheaderstat(false);
             } else if (!isScrollingDown && !headerstatus) {
                 setheaderstat(true);
@@ -48,7 +47,6 @@ function Header() {
             lastScrollRef.current = currentScroll;
         };
 
-        // Троттлинг событий скролла (1 раз в 100 мс)
         const throttledScroll = () => {
             let timeout;
             return () => {
