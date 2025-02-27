@@ -1,25 +1,113 @@
+:root{
+    --page-margin:calc(100vw * 0.0833333);
+}
+
 .Firstpage-block{
+    position: relative;
+    display: flex;
+    margin: 0 var(--page-margin) 0 var(--page-margin) ;
+    font-family: inter;
+}
+
+.radical-orange{
+    position: absolute;
+    display: block;
+    width: 580px;
+    height: 580px;
+    top: -40px;
+    border-radius: 50%;
+    opacity: 13%;
+    background-color: #FA7515;
+    filter: blur(100px);
+    z-index: -100;
+}
+
+.radical-blue{
+    content: "";
+    position: absolute;
+    display: block;
+    width: 580px;
+    height: 580px;
+    bottom: 0;
+    right: calc(var(--page-margin)*(-1));
+    border-radius: 50%;
+    opacity: 80%;
+    background-color: #E2F8F0B2;
+    filter: blur(100px);
+    z-index: -100;
+}
+
+.Firstpage-info{
     display: flex;
     flex-wrap: wrap;
-    margin: 0 120px 0 120px;
+    width: 50%;
 }
 
-.Firstpage-info{}
-
-.Firstpage-info__title{
-    font-family:inter;
+.Firstpage__title{
     font-weight: 700;
-    font-size: 80px;
-    line-height: 96px;
-    letter-spacing: -3px;
+    font-size: calc(100vw*0.05);
+    line-height: calc(100vw*0.0666667);
+    letter-spacing: calc(100vw*-0.0002083333);
 }
 
-.Firstpage-info__slogan{}
+.Firstpage-slogan{
+    display: flex;
+    margin: calc(100vw*0.077778) 0 calc(100vw*0.04791667) 0;
+    font-weight: 600;
+    font-size: calc(100vw*0.022222);
+    line-height: calc(100vw*0.02916667);
+    letter-spacing: calc(100vw*-0.00069444);   
+}
 
-.Firstpage-registration{}
+
+
+.Firstpage-slogan__border{
+    display: block;
+    height: 100%;
+    width:15%;
+    border-top: 1px solid;
+    margin: calc(100vw*0.02916667*0.5);
+}
+
+.Firstpage-registration{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .Firstpage-registration__email{}
 
-.Firstpage-registration__button{}
+.Firstpage-registration__button{
+    width: 175px;
+    height: 56px;
+    border-radius: 30px;
+    color: white;
+    background-color: black;
+}
 
-.Firstpage-diagrams{}
+.Firstpage-diagrams{
+    position: relative;
+    margin-left:120px;
+    width: 50%;
+}
+
+.Firstpage-diagrams img:nth-child(1){
+    position: absolute;
+    width: 80%;
+    top: 35px;
+    left: 0;
+}
+
+.Firstpage-diagrams img:nth-child(2){
+    position: absolute;
+    width: 80%;
+    bottom: 0;
+    left: 0;
+}
+
+.Firstpage-diagrams img:nth-child(3){
+    position: absolute;
+    width: 40%;
+    top: -20px;
+    right: -30px;
+}

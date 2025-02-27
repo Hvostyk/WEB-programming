@@ -1,10 +1,19 @@
 import style from '../styles/header.module.css';
 import classNames from 'classnames/bind';
 import { useState, useEffect, useRef } from "react";
-
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+gsap.registerPlugin(useGSAP);
 const cx = classNames.bind(style);
 
+
 function Header() {
+
+    // useGSAP(() => {
+    //     // gsap code here...
+    //     gsap.to('[class*="header-block"]', { x: 360 }); // <-- automatically reverted
+    // }); // <-- scope is for selector text (optional)
+
     const [burgermenu_close, closeburger] = useState(true);
     const [burgermenu_open, openburger] = useState(false);
     const [headerstatus, setheaderstat] = useState(true);
