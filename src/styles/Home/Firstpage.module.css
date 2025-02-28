@@ -121,3 +121,127 @@
     top: calc(100vw*0.01388889*(-1));
     right: calc(100vw*0.0142857*(-1));
 }
+
+@media(max-width:1200px){
+    .Firstpage-block{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 24px 20px 32px 20px;
+        font-family: inter;
+    }
+    
+    .radical-orange{
+        position: absolute;
+        display: block;
+        width: calc(100vw*0.4142857143);
+        height: calc(100vw*0.4142857143);
+        top: calc(100vw*0.02778*(-1));
+        border-radius: 50%;
+        opacity: 13%;
+        background-color: #FA7515;
+        filter: blur(100px);
+        z-index: -100;
+    }
+    
+    .radical-blue{
+        content: "";
+        position: absolute;
+        display: block;
+        width: calc(100vw*0.4142857143);
+        height: calc(100vw*0.4142857143);
+        bottom: 0;
+        right: calc(var(--page-margin)*(-1));
+        border-radius: 50%;
+        opacity: 80%;
+        background-color: #E2F8F0B2;
+        filter: blur(100px);
+        z-index: -100;
+    }
+    
+    .Firstpage-info{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .Firstpage__title{
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 40px;
+        letter-spacing: -1px;
+        margin: 0 auto;
+    }
+    
+    .Firstpage-slogan{
+        display: flex;
+        margin: 0 auto;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;   
+    }
+    
+    
+    
+    .Firstpage-slogan__border{
+        display: block;
+        height: 100%;
+        width:24px;
+        border-top: 2px solid;
+        margin: 12px;
+    }
+    
+    .Firstpage-registration{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .Firstpage-registration__email input{
+        background-color: transparent;
+        width: 219px;
+        height: 36px;
+        margin-right: 8px;
+        border-bottom: 2px solid #3b3a3a33;
+    }
+    
+    .Firstpage-registration__email input::placeholder{
+        font-size:14px;
+    }
+    
+    .Firstpage-registration__button{
+        width: 108px;
+        height: 36px;
+        border-radius: 30px;
+        color: white;
+        background-color: black;
+    }
+    
+    .Firstpage-diagrams{
+        position: relative;
+        margin-top:120px;
+        min-width: 400px;
+        max-width: 450px;
+    }
+    
+    .Firstpage-diagrams img:nth-child(1){
+        position: absolute;
+        width: 80%;
+        top: 0;
+    }
+    
+    .Firstpage-diagrams img:nth-child(2){
+        position: absolute;
+        width: 80%;
+        bottom: 0;
+    }
+    
+    .Firstpage-diagrams img:nth-child(3){
+        position: absolute;
+        width: 40%;
+        top: calc(100vw*0.01388889*(-1));
+        right: calc(100vw*0.0142857*(-1));
+    }
+}

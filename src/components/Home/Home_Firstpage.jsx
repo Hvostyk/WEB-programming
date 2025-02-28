@@ -13,8 +13,8 @@ function Home_Firstpage(){
 
                     <div className={style["Firstpage-slogan"]}>
                         <div className={style["Firstpage-slogan__border"]}></div>
-                        <p className={style["Firstpage-slogan__text"]}>When it comes to interactive marketing, we've got you covered. <br />
-                        Be where the world is going</p>
+                        <div className={style["Firstpage-slogan__text"]}>When it comes to interactive marketing, we've got you covered. <br />
+                        Be where the world is going</div>
                     </div>
 
                     <div className={style["Firstpage-registration"]}>
