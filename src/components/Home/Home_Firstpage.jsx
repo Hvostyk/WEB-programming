@@ -1,6 +1,65 @@
 import style from '../../styles/Home/Firstpage.module.css'
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
+
+const window_width=window.innerWidth;
+let FP_timeline=gsap.timeline();
 
 function Home_Firstpage(){
+    useGSAP(()=>{
+        FP_timeline.fromTo('[class*="Firstpage__title"]',{
+            x:-300,
+            opacity:0,
+        },{
+            ScrollTrigger:{
+                trigger: '[class*="Firstpage-block"]',
+                start: "center top",
+            },
+            x:0,
+            opacity:1,
+            duration:0.7,
+        },1.6)
+        .fromTo('[class*="Firstpage-slogan"]',{
+            x:-300,
+            opacity:0,
+        },{
+            ScrollTrigger:{
+                trigger: '[class*="Firstpage-block"]',
+                start: "center top",
+            },
+            x:0,
+            opacity:1,
+            duration:0.7,
+        },1.6)
+        .fromTo('[class*="Firstpage-diagrams"]',{
+            x:window_width+300,
+            opacity:0,
+        },{
+            ScrollTrigger:{
+                trigger: '[class*="Firstpage-block"]',
+                start: "center top",
+            },
+            x:0,
+            opacity:1,
+            duration:0.7,
+        })
+        .fromTo('[class*="Firstpage-registration"]',{
+            x:-300,
+            opacity:0,
+        },{
+            ScrollTrigger:{
+                trigger: '[class*="Firstpage-block"]',
+                start: "center top",
+            },
+            x:0,
+            opacity:1,
+            duration:0.7,
+        })
+    });
+
     return(
         <div>
             <div className={style["Firstpage-block"]}>
