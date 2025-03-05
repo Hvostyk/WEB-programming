@@ -3,6 +3,7 @@
 }
 
 .Firstpage-block{
+    padding-top:calc(100vw*0.1395833);
     position: relative;
     display: flex;
     margin: 0 var(--page-margin) 0 var(--page-margin) ;
@@ -88,6 +89,10 @@
 }
 
 .Firstpage-registration__button{
+    font-weight: 700;
+    font-family: inter;
+    font-size: calc(100vw*0.0114286);
+    line-height: calc(100vw*0.017143);
     width: calc(100vw*0.125);
     height: calc(100vw*0.04);
     border-radius: calc(100vw*0.02083333);
@@ -177,10 +182,10 @@
     
     .Firstpage-slogan{
         display: flex;
-        margin: 0 auto;
         font-weight: 600;
         font-size: 16px;
         line-height: 24px;   
+        margin: 48px auto 40px auto;
     }
     
     
@@ -197,6 +202,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-bottom: 150px;
     }
     
     .Firstpage-registration__email input{
@@ -221,7 +227,6 @@
     
     .Firstpage-diagrams{
         position: relative;
-        margin-top:120px;
         min-width: 400px;
         max-width: 450px;
     }

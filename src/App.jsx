@@ -1,5 +1,5 @@
 import Home from './pages/Home.jsx'
-
+import Signup from './components/Signup.jsx';
 import {
     BrowserRouter,
     Routes,
@@ -11,6 +11,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home/>} />
+                <Route path="signup" element={<Signup />} />
             </Routes>
         </BrowserRouter>
         );

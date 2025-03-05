@@ -1,0 +1,17 @@
+.Form-block {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+    text-align: center;
+}
+
+.Form-grid {
+    display: grid;
+    gap: 20px;
+    }
+
+    @media (min-width: 760px) {
+        .Form-grid {
+        grid-template-columns: repeat(2, 1fr);
+        }
+    }

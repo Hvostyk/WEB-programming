@@ -1,6 +1,7 @@
 import style from '../styles/header.module.css';
 import classNames from 'classnames/bind';
 import { useState, useEffect, useRef } from "react";
+import {Link} from 'react-router-dom';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(useGSAP);
@@ -96,7 +97,9 @@ function Header() {
                     </div>
 
                     <div className={style["header-contact"]}>
-                        <div className={style["header-contact__text"]}>Contact Us➔</div>
+                        <Link to="signup">
+                            <div className={style["header-contact__text"]}>Contact Us➔</div>
+                        </Link>
                         <div className={style["header-contact__border"]}></div>
                     </div>
                 </div>
