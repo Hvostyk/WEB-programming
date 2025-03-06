@@ -1,6 +1,6 @@
 import style from "../styles/Signup.module.css"
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import Input from "./Input";
@@ -12,7 +12,8 @@ function Signup(){
     const useValidation= (value , validators)=>{
         const [lengthError,setlengthError]=useState(false)
         const [isEmpty,setEmpty]=useState(true)
-        const [Mask,setMask]=useState(true)
+        const [maskError,setmaskError]=useState(false)
+        const [isValid, setValid]=useState(false)
     useEffect(()=>{
         for(const item in validators){
             switch (item){
@@ -25,16 +26,27 @@ function Signup(){
                     console.log("Empty"+isEmpty)
                     break;
                 
-                case 'Mask':
-                    (validators[item].test(String(value).toLowerCase()))  ? setMask(false) : setMask(true);
+                case 'maskError':
+                    (!validators[item].test(String(value).toLowerCase()))  ? setmaskError(true) : setmaskError(false);
             }
         }
     }, [value])
 
+    useEffect(()=>{
+        if(isEmpty || lengthError || maskError){
+            setValid(true)
+        }
+        else{
+            setValid(false)
+        }
+
+    },[isEmpty,lengthError,maskError])
+
     return{
         isEmpty,
         lengthError,
-        Mask,
+        maskError,
+        isValid,
     }
         
     }
@@ -84,7 +96,7 @@ function Signup(){
     }
     const EmailRegexp=/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     const text=useInput('', {isEmpty:true , minLength:4})
-    const email=useInput('', {isEmpty:true, Mask:EmailRegexp})
+    const email=useInput('', {isEmpty:true, maskError:EmailRegexp})
     const password=useInput('', {isEmpty:true , minLength:4})
     
     return(
@@ -103,7 +115,7 @@ function Signup(){
                     </li>
                     <li>
                         {(email.isdirty && email.isEmpty) &&  <div style={{color:'red'}}>Пустое поле</div>}
-                        {(email.isdirty && email.Mask) &&  <div style={{color:'red'}}>Неккоректный email</div>}
+                        {(email.isdirty && !email.maskError) &&  <div style={{color:'red'}}>Неккоректный email</div>}
                         <input value={email.value} onChange={e=>email.onChange(e)} onBlur={e=>email.onBlur(e)} type="email" placeholder="Email"/>
                     </li>
                     <li>
@@ -112,9 +124,7 @@ function Signup(){
                         <input value={password.value} onChange={e=>password.onChange(e)} onBlur={e=>password.onBlur(e)} type="Password" placeholder="Password"/>
                     </li>
                 </ul>
-                <Link to='/'>
-                <button >Sign up</button>
-                </Link>
+                <button disabled={email.valid} type="submit">Sign up</button>
             </form>
         </div>
 
@@ -130,7 +140,7 @@ function Signup(){
                     </li>
                     <li>
                         {(email.isdirty && email.isEmpty) &&  <div style={{color:'red'}}>Пустое поле</div>}
-                        {(email.isdirty && email.Mask) &&  <div style={{color:'red'}}>Неккоректный email</div>}
+                        {(email.isdirty && email.maskError) &&  <div style={{color:'red'}}>Неккоректный email</div>}
                         <input value={email.value} onChange={e=>email.onChange(e)} onBlur={e=>email.onBlur(e)} type="email" placeholder="Email"/>
                     </li>
                     <li>
@@ -140,9 +150,7 @@ function Signup(){
                     </li>
                 </ul>
                 <a href="https://vk.com/clip243220223_456241503?c=1">Forgot your password?</a>
-                <Link to='/'>
-                <button >Sign in</button>
-                </Link>
+                <button disabled={email.valid} type="submit">Sign in</button>
             </form>
         </div>
 
