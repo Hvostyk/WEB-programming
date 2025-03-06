@@ -1,10 +1,27 @@
 import style from "../styles/Input.module.css"
-function Errors(validators){
-    for(item in validators){
-        return(
-            <div></div>
-        )
+import { use, useEffect, useState } from 'react';
+function Errors({validators}){
+    const errors=[]
+    for(const item in validators){
+        switch (item){
+            case 'minLength':
+                errors.push(<div>{ <div style={{color:'red'}}>Минимум {validators[item]} знака</div>}</div>)
+                break;
+            
+            case 'isEmpty':
+                errors.push(<div>{ <div style={{color:'red'}}>Пустое поле</div>}</div>)
+                break;
+            
+            case 'Mask':
+                errors.push(<div>{<div style={{color:'red'}}>Неккоректный inputvalid</div>}</div>)
+                break;
+            
+            default:
+                break;
+        }
+        
     }
+    return (<>{errors}</>);
 }
 
 function Input({type, placeholder,validators}){
@@ -26,6 +43,7 @@ function Input({type, placeholder,validators}){
                 
                 case 'Mask':
                     (validators[item].test(String(value).toLowerCase()))  ? setMask(false) : setMask(true);
+                    break;
             }
         }
     }, [value])
@@ -64,7 +82,10 @@ function Input({type, placeholder,validators}){
         }
     const inputvalid=useInput('', validators)
     return(
-        <input value={inputvalid.value} onChange={e=>inputvalid.onChange(e)} onBlur={e=>inputvalid.onBlur(e)} type={type} placeholder={placeholder}/>
+        <div>
+            <Errors validators={validators}/>
+            <input value={inputvalid.value} onChange={e=>inputvalid.onChange(e)} onBlur={e=>inputvalid.onBlur(e)} type={type} placeholder={placeholder}/>
+        </div>
     )
 }
 

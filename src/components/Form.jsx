@@ -1,29 +1,25 @@
-import style from "../styles/Form.module.css"
 import Input from "./Input";
 
-function Form({id}){
+function Form({title,span}){
+    const EmailRegexp=/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     return(
-        <div className={style["Form-block"]}>
-            <div className={style["Form-grid"]}>
-                <Input 
-                    type="text"
-                    placeholder="Name"
-                    validators={{isEmpty:true , minLength:4}}
-                />
+        <form>
+            <h1>{title}</h1>
 
-                <Input 
-                    type="email"
-                    placeholder="Email"
-                    validators={{isEmpty:true, Mask:EmailRegexp}}
-                />
-
-                <Input    
-                    type="password"
-                    placeholder="Password"
-                    validators={{isEmpty:true , minLength:4}}
-                />
-            </div>
-        </div>
+            <span>{span}</span>
+            <ul>
+                <li>
+                    <Input type={'text'} placeholder={'Name'} validators={{isEmpty:4,minLength:4}}/>
+                </li>
+                <li>
+                    <Input type={'email'} placeholder={'Email'} validators={{isEmpty:4,Mask:EmailRegexp}}/>
+                </li>
+                <li>
+                    <Input type={'password'} placeholder={'Password'} validators={{isEmpty:4,minLength:4}}/>
+                </li>
+            </ul>
+            
+        </form>
     );
 }
 

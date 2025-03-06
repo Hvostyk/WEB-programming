@@ -124,7 +124,7 @@ function Signup(){
                         <input value={password.value} onChange={e=>password.onChange(e)} onBlur={e=>password.onBlur(e)} type="Password" placeholder="Password"/>
                     </li>
                 </ul>
-                <button disabled={email.valid} type="submit">Sign up</button>
+                <button disabled={email.isValid || text.isValid || password.isValid} type="submit">Sign up</button>
             </form>
         </div>
 
@@ -150,7 +150,7 @@ function Signup(){
                     </li>
                 </ul>
                 <a href="https://vk.com/clip243220223_456241503?c=1">Forgot your password?</a>
-                <button disabled={email.valid} type="submit">Sign in</button>
+                <button disabled={email.isValid || text.isValid || password.isValid} type="submit">Sign in</button>
             </form>
         </div>
 
