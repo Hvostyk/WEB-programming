@@ -30,7 +30,6 @@ function Errors({validators,inputvalid}){
     return (<>{errors}</>);
 }
 
-
 function Input({type, placeholder,validators}){
     const useValidation= (value , validators)=>{
         const [lengthError,setlengthError]=useState(false)
@@ -86,7 +85,6 @@ function Input({type, placeholder,validators}){
     
             
         }
-        
     const inputvalid=useInput('', validators)
     return(
         <div>

@@ -5,19 +5,25 @@ function Form({title,span}){
     return(
         <form>
             <h1>{title}</h1>
-
             <span>{span}</span>
             <ul>
                 <li>
-                    <Input type={'text'} placeholder={'Name'} validators={{isEmpty:4,minLength:4}}/>
+                    <Input type={'text'} 
+                    placeholder={'Name'} 
+                    validators={{isEmpty:4,minLength:4}}/>
                 </li>
                 <li>
-                    <Input type={'email'} placeholder={'Email'} validators={{isEmpty:4,maskError:EmailRegexp}}/>
+                    <Input type={'email'} 
+                    placeholder={'Email'} 
+                    validators={{isEmpty:4,maskError:EmailRegexp}}/>
                 </li>
                 <li>
-                    <Input type={'password'} placeholder={'Password'} validators={{isEmpty:4,minLength:4}}/>
+                    <Input type={'password'} 
+                    placeholder={'Password'} 
+                    validators={{isEmpty:4,minLength:4}}/>
                 </li>
             </ul>
+            <button type="submit">{title}</button>
             
         </form>
     );
