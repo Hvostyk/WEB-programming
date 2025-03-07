@@ -4,7 +4,7 @@ import { use, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import Input from "./Input";
-
+import Form from "./Form";
 const cx=classNames.bind(style);
 
 function Signup(){

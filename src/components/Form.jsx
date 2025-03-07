@@ -12,7 +12,7 @@ function Form({title,span}){
                     <Input type={'text'} placeholder={'Name'} validators={{isEmpty:4,minLength:4}}/>
                 </li>
                 <li>
-                    <Input type={'email'} placeholder={'Email'} validators={{isEmpty:4,Mask:EmailRegexp}}/>
+                    <Input type={'email'} placeholder={'Email'} validators={{isEmpty:4,maskError:EmailRegexp}}/>
                 </li>
                 <li>
                     <Input type={'password'} placeholder={'Password'} validators={{isEmpty:4,minLength:4}}/>

@@ -1,19 +1,25 @@
 import style from "../styles/Input.module.css"
 import { use, useEffect, useState } from 'react';
-function Errors({validators}){
+function Errors({validators,inputvalid}){
     const errors=[]
     for(const item in validators){
         switch (item){
             case 'minLength':
-                errors.push(<div>{ <div style={{color:'red'}}>Минимум {validators[item]} знака</div>}</div>)
+                if(inputvalid.isdirty && inputvalid.lengthError){
+                    errors.push(<div style={{color:'red'}}>Минимум {validators[item]} знака</div>)
+                }
                 break;
             
             case 'isEmpty':
-                errors.push(<div>{ <div style={{color:'red'}}>Пустое поле</div>}</div>)
+                if(inputvalid.isdirty && inputvalid.isEmpty){  
+                    errors.push(<div style={{color:'red'}}>Пустое поле</div>)
+                }
                 break;
             
-            case 'Mask':
-                errors.push(<div>{<div style={{color:'red'}}>Неккоректный inputvalid</div>}</div>)
+            case 'maskError':
+                if(inputvalid.isdirty && inputvalid.maskError){
+                    errors.push(<div style={{color:'red'}}>Неккоректный email</div>)
+                }
                 break;
             
             default:
@@ -24,11 +30,12 @@ function Errors({validators}){
     return (<>{errors}</>);
 }
 
+
 function Input({type, placeholder,validators}){
     const useValidation= (value , validators)=>{
         const [lengthError,setlengthError]=useState(false)
         const [isEmpty,setEmpty]=useState(true)
-        const [Mask,setMask]=useState(true)
+        const [maskError,setmaskError]=useState(true)
     useEffect(()=>{
         for(const item in validators){
             switch (item){
@@ -37,12 +44,11 @@ function Input({type, placeholder,validators}){
                     break;
                 
                 case 'isEmpty':
-                    value ? setEmpty(false) : setEmpty(true)
-                    console.log("Empty"+isEmpty)
+                    value ? setEmpty(false) : setEmpty(true);
                     break;
                 
-                case 'Mask':
-                    (validators[item].test(String(value).toLowerCase()))  ? setMask(false) : setMask(true);
+                    case 'maskError':
+                    (!validators[item].test(String(value).toLowerCase()))  ? setmaskError(true) : setmaskError(false);
                     break;
             }
         }
@@ -51,7 +57,7 @@ function Input({type, placeholder,validators}){
     return{
         isEmpty,
         lengthError,
-        Mask,
+        maskError,
     }
         
     }
@@ -80,11 +86,16 @@ function Input({type, placeholder,validators}){
     
             
         }
+        
     const inputvalid=useInput('', validators)
     return(
         <div>
-            <Errors validators={validators}/>
-            <input value={inputvalid.value} onChange={e=>inputvalid.onChange(e)} onBlur={e=>inputvalid.onBlur(e)} type={type} placeholder={placeholder}/>
+            <Errors validators={validators} inputvalid={inputvalid}/>
+            <input value={inputvalid.value} 
+            onChange={e=>inputvalid.onChange(e)} 
+            onBlur={e=>inputvalid.onBlur(e)} 
+            type={type} 
+            placeholder={placeholder} />
         </div>
     )
 }
