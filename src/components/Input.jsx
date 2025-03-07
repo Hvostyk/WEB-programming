@@ -1,5 +1,4 @@
-import style from "../styles/Input.module.css"
-import { use, useEffect, useState } from 'react';
+import {useEffect, useState } from 'react';
 function Errors({validators,inputvalid}){
     const errors=[]
     for(const item in validators){

@@ -5,6 +5,8 @@ import { useLocation } from 'react-router-dom'
 import Form from "./Form";
 const cx=classNames.bind(style);
 
+
+
 function Signup(){
     const location = useLocation();
     const activity = location.state;
