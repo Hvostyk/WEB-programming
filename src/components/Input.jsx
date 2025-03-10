@@ -70,8 +70,6 @@ function Input({type, placeholder,validators}){
     
             function onBlur(e){
                 setDirty(true);
-                console.log(isdirty)
-                
             }
     
             return{
