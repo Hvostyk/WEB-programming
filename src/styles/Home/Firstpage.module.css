@@ -6,7 +6,7 @@
     padding:calc(100vw*0.1395833) 0;
     position: relative;
     display: flex;
-    margin: 0 var(--page-margin) 0 var(--page-margin) ;
+    margin:var(--page-margin);
     font-family: inter;
 }
 
