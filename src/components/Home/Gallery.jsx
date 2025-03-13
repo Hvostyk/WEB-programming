@@ -13,20 +13,31 @@ const container = Gallery_Images.map((item) => (
 function Gallery() {
     const maxKey = Gallery_Images.length - 1;
     const [currentPos, setCurrentPos] = useState(0);
-    const [offset, setOffset] = useState(0);
+    const [offset, setOffset] = useState(-1250);
 
     const useImage_pos = () => {
         function onClick(action) {
             switch (action) {
                 case "next":
-                    console.log(currentPos)
-                    setCurrentPos((prev) => (prev + 1 > maxKey ? 0 : prev + 1));
-                    setOffset((prev) => prev - 1250);
+                    if(currentPos+1<=maxKey){
+                        setCurrentPos((prev) => (prev + 1 > maxKey ? 0 : prev + 1));
+                        setOffset((prev) => prev - 1250);
+                    }
+                    else if(currentPos+1>maxKey){
+                        setCurrentPos(0);
+                        setOffset((prev) => prev + 1250*maxKey)
+                    }
                     break;
                 case "prev":
-                    console.log(currentPos)
-                    setCurrentPos((prev) => (prev - 1 < 0 ? maxKey : prev - 1));
-                    setOffset((prev) => prev + 1250);
+                    if(currentPos-1>=0){
+                        setCurrentPos((prev) => (prev - 1 < 0 ? maxKey : prev - 1));
+                        setOffset((prev) => prev + 1250);
+                    }
+                    else if(currentPos-1<0){
+                        setCurrentPos(maxKey);
+                        setOffset((prev) => prev - 1250*maxKey)
+                    }
+
                     break;
                 default:
                     break;
@@ -38,7 +49,7 @@ function Gallery() {
     };
 
 
-    const prevcon = currentPos === 0 ? [] : container.slice(0, currentPos);
+    const prevcon = container.slice(0, currentPos);
     const currentcon=container[currentPos]
     const nextcon = container.slice(currentPos + 1, maxKey + 1);
 
@@ -48,6 +59,7 @@ function Gallery() {
         <div className={style["Gallery"]}>
             <div className={style["Slides"]} style={{ transform: `translateX(${offset}px)` }}>
             <ul className={style["prevCon"]}>
+                        <li>{container[maxKey]}</li>
                         {prevcon.map((item, index) => (
                             <li key={index}>{item}</li>
                         ))}
@@ -61,6 +73,7 @@ function Gallery() {
                         {nextcon.map((item, index) => (
                             <li key={index + currentPos + 1}>{item}</li>
                         ))}
+                        <li>{container[0]}</li>
                     </ul>
             </div>
             <button className={style["PrevButt"]} onClick={() => img_pos.onClick("prev")}>prev</button>

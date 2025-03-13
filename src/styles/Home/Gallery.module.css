@@ -25,27 +25,30 @@
     width: 100%;
 }
 
-button {
-    z-index: 10;
+.Gallery_Images img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .PrevButt {
     position: absolute;
+    z-index: 10;
     height: 100%;
     top: 0;
     left: 0;
+    width: 215px;
+    opacity: 0;
 }
 
 .NextButt {
     position: absolute;
+    z-index: 10;
     height: 100%;
     top: 0;
     right: 0;
-}
-
-.currentCon{
-    justify-self: center;
-    background-color: black;
+    width: 215px;
+    opacity: 0;
 }
 
 ul{
