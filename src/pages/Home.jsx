@@ -8,7 +8,6 @@ function Firstpage(){
             <Header/>
             <Home_Firstpage/>
             <Gallery/>
-            <Signup/>
         </div>
     )
 }
