@@ -7,7 +7,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const window_width=window.innerWidth;
 let FP_timeline=gsap.timeline();
-
 function Home_Firstpage(){
     useGSAP(()=>{
         FP_timeline.fromTo('[class*="Firstpage__title"]',{
