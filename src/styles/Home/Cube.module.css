@@ -1,0 +1,15 @@
+
+.Cube-back{
+    margin: 200px auto;
+    width: 800px;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+}
+.Cube{
+    width: 200px;
+    height: 200px;
+    background-color: red;
+}

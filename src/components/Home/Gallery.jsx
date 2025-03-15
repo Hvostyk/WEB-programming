@@ -1,12 +1,12 @@
 import style from "../../styles/Home/Gallery.module.css";
 import { Gallery_Images } from "../../assets/Images.jsx";
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useEffect,useLayoutEffect, useRef, useState } from "react";
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(useGSAP);
-gsap.registerPlugin(ScrollTrigger);
+
 
 const container = Gallery_Images.map((item) => (
     <Fragment key={item.id}>
@@ -18,20 +18,23 @@ const container = Gallery_Images.map((item) => (
 
 
 function Gallery() {
+    gsap.registerPlugin(ScrollTrigger);
 
-    useGSAP(()=>{
-        gsap.fromTo('[class*="Gallery"]',{
-            y:500,
-            opacity:0,
-        },{  
-            ScrollTrigger:{
-                trigger:'[class*="Gallery"]',
-                start:"center top",
-            },
-            y:0,
-            opacity:1,
-            duration:0.7,
-        },)
+    useLayoutEffect(()=>{
+        gsap.context(()=>{
+            gsap.fromTo('[class*="Gallery"]',{
+                y:400,
+                opacity:0,
+            },{
+                scrollTrigger:{
+                    trigger:'[class*="Gallery"]',
+                    start:"top bottom",
+                },
+                y:0,
+                opacity:1,
+                duration:2,
+            })
+    })
     })
 
     const maxKey = Gallery_Images.length - 1;
