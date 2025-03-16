@@ -9,20 +9,22 @@ function Cube(){
     const cuberef=useRef()
     gsap.registerPlugin(ScrollTrigger);
     useLayoutEffect(()=>{
-        gsap.context(()=>{
-            gsap.fromTo('[class*="Cube"]',{
-                x:400,
-                opacity:0,
-            },{
-                scrollTrigger:{
-                    trigger:'[class*="Cube-back"]',
-                    start:"top center",
+        gsap.fromTo('[class*="Cube"]',{
+            x:400,
+            opacity:0,
+        },{
+            ScrollTrigger:{
+                trigger:'[class*="Cube"]',
+                start:"center top",
+                markers:{
+                    startColor:"red",
+                    endColor:"red",
                 },
-                x:0,
-                opacity:1,
-                duration:2,
-            })
-    })
+            },
+            x:0,
+            opacity:1,
+            duration:2,
+        })
     })
 
     return(
