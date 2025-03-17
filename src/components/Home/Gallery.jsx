@@ -43,20 +43,22 @@ function Gallery() {
     }, []);
 
     // Обработчик изменения размера окна
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth); // Обновляем ширину окна
-            setOffset(-(window.innerWidth * 0.7404762)); // Пересчитываем offset
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
 
     const maxKey = Gallery_Images.length - 1;
     const [currentPos, setCurrentPos] = useState(0);
 
     const useImage_pos = () => {
+        useEffect(() => {
+            const handleResize = () => {
+                setWindowWidth(window.innerWidth); // Обновляем ширину окна
+                console.log(currentPos)
+                setOffset(-(window.innerWidth * 0.7404762*(currentPos+1))); // Пересчитываем offset
+            };
+    
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }, [currentPos]);
+
         const onClick = (action) => {
             switch (action) {
                 case "next":
@@ -67,6 +69,7 @@ function Gallery() {
                         setCurrentPos(0);
                         setOffset((prev) => prev + offsetWidth * maxKey);
                     }
+                    console.log("penis"+currentPos)
                     break;
                 case "prev":
                     if (currentPos - 1 >= 0) {
