@@ -1,4 +1,5 @@
 import {useEffect, useState } from 'react';
+import { SignupData } from './SignupData.jsx';
 function Errors({validators,inputvalid}){
     const errors=[]
     for(const item in validators){
@@ -64,6 +65,11 @@ function Input({type, placeholder,validators}){
             const [value,setValue]=useState(initialValue)
             const [isdirty, setDirty]=useState(false)
             const valid = useValidation(value,validators)
+
+            useEffect(() => {
+                SignupData[type] = value;
+            }, [value, type]);
+
             function onChange(e){
                 setValue(e.target.value);
             }
