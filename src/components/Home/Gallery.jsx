@@ -28,7 +28,7 @@ function Gallery() {
     useEffect(() => {
         gsap.context(() => {
             gsap.fromTo('[class*="Gallery"]', {
-                y: 400,
+                y: 80,
                 opacity: 0,
             }, {
                 scrollTrigger: {
@@ -94,6 +94,7 @@ function Gallery() {
     const img_pos = useImage_pos();
 
     return (
+        
         <div className={style["Gallery"]}>
             <div className={style["Slides"]} style={{ transform: `translateX(${offset}px)` }}>
                 <ul className={style["prevCon"]}>
