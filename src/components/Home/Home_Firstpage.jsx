@@ -20,7 +20,7 @@ function Home_Firstpage(){
             x:0,
             opacity:1,
             duration:0.7,
-        },1.5)
+        },0.2)
         .fromTo('[class*="Firstpage-slogan"]',{
             x:-300,
             opacity:0,
@@ -32,7 +32,7 @@ function Home_Firstpage(){
             x:0,
             opacity:1,
             duration:0.7,
-        },1.5)
+        },0.2)
         .fromTo('[class*="Firstpage-diagrams"]',{
             x:window_width+300,
             opacity:0,

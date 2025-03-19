@@ -98,6 +98,10 @@ h1{
     z-index: 1;
 }
 
+.signbody input{
+    padding-left: 5px;
+}
+
 .container.active .signup{
     transform: translateX(100%);
     z-index: 3;

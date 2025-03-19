@@ -1,7 +1,6 @@
 import Input from "./Input";
 import { SignupData } from "./SignupData.jsx";
 function Form({title,span}){
-
     const AndrewUrl="http://192.168.1.221:8080/register"
 
     function makePostRequest(){

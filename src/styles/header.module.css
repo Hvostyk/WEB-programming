@@ -12,7 +12,6 @@ header {
     margin: 0 calc(100vw * 0.0833333);
     background: rgb(255,208,174);
     background: radial-gradient(circle, rgba(255,208,174,1) 0%, rgba(226,248,240,1) 70%);
-    animation: header-block 1.5s ;
     border-radius:10px;
 }
 
@@ -23,19 +22,6 @@ header {
     align-items: center;
     font-size: calc(100vw * 0.011111);
     margin: 0 10px;
-}
-
-@keyframes header-block{
-    from{
-        visibility: none;
-        opacity: 0;
-        transform: translateY(200px);
-    }
-    to{
-        transform: translateY(0px);
-        visibility: visible;
-        opacity: 1;
-    }
 }
 
 .header_visible{
