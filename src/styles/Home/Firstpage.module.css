@@ -3,7 +3,7 @@
 }
 
 .Firstpage-block{
-    padding:calc(100vw*0.1395833) 0;
+    padding:calc(100vw*0.11) 0;
     position: relative;
     display: flex;
     margin: 0 var(--page-margin) 0 var(--page-margin) ;
